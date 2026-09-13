@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="A modern JavaScript To-Do List application with CRUD functionality and local storage.">
+
+    <title>TaskFlow | To-Do List</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">TASK MANAGEMENT</p>
+                <h1>Task<span>Flow</span></h1>
+                <p class="subtitle">
+                    Organize your day. Get things done.
+                </p>
+            </div>
+
+            <div class="task-summary">
+                <strong id="totalTasks">0</strong>
+                <span>Total Tasks</span>
+            </div>
+        </header>
+
+
+        <!-- Add Task -->
+        <section class="task-input-section" aria-label="Add a new task">
+
+            <form id="taskForm">
+
+                <label for="taskInput" class="sr-only">
+                    Enter a new task
+                </label>
+
+                <input
+                    type="text"
+                    id="taskInput"
+                    placeholder="What needs to be done?"
+                    maxlength="100"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" class="add-btn">
+                    <span>+</span>
+                    Add Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats" aria-label="Task statistics">
+
+            <div class="stat-card">
+                <span class="stat-icon">📋</span>
+                <div>
+                    <strong id="allCount">0</strong>
+                    <small>All Tasks</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">⏳</span>
+                <div>
+                    <strong id="activeCount">0</strong>
+                    <small>Active</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">✓</span>
+                <div>
+                    <strong id="completedCount">0</strong>
+                    <small>Completed</small>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Filter Navigation -->
+        <nav class="filters" aria-label="Task filters">
+
+            <button
+                class="filter-btn active"
+                data-filter="all"
+                type="button"
+            >
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="active"
+                type="button"
+            >
+                Active
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="completed"
+                type="button"
+            >
+                Completed
+            </button>
+
+        </nav>
+
+
+        <!-- Task List -->
+        <section class="tasks-section" aria-label="Task list">
+
+            <ul id="taskList" class="task-list"></ul>
+
+            <!-- Empty state -->
+            <div id="emptyState" class="empty-state">
+
+                <div class="empty-icon">✓</div>
+
+                <h2 id="emptyTitle">No tasks yet</h2>
+
+                <p id="emptyMessage">
+                    Add your first task and start getting things done.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>
+                TaskFlow • Built with HTML, CSS & JavaScript
+            </p>
+
+            <button
+                id="clearCompleted"
+                class="clear-btn"
+                type="button"
+            >
+                Clear Completed
+            </button>
+        </footer>
+
+    </main>
+
+
+    <!-- Edit Modal -->
+    <div
+        id="editModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="close-modal"
+                type="button"
+                aria-label="Close edit window"
+            >
+                ×
+            </button>
+
+            <h2>Edit Task</h2>
+
+            <p>Update your task below.</p>
+
+            <label for="editInput">
+                Task
+            </label>
+
+            <input
+                type="text"
+                id="editInput"
+                maxlength="100"
+                autocomplete="off"
+            >
+
+            <div class="modal-actions">
+
+                <button
+                    id="cancelEdit"
+                    class="cancel-btn"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="saveEdit"
+                    class="save-btn"
+                    type="button"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
